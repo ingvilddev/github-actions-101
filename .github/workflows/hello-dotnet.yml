@@ -29,3 +29,11 @@ jobs:
 
       - name: "Run tests in Notes.Api.Test"
         run: "dotnet test --no-build --configuration Release $NOTES_TEST_CONF"
+
+      - name: "Show test results in Notes.Api.Test"
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: test-report
+          path: Notes.Api.Test/TestResults/*.trx
+          reporter: dotnet-trx
