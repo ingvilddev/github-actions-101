@@ -28,7 +28,12 @@ jobs:
         run: "dotnet build --no-restore --configuration Release $NOTES_TEST_CONF"
 
       - name: "Run tests in Notes.Api.Test"
-        run: "dotnet test --no-build --configuration Release $NOTES_TEST_CONF"
+        run: "dotnet test \
+          --no-build \
+          --configuration Release \
+          --verbosity normal \
+          --logger trx \
+          $NOTES_TEST_CONF"
 
       - name: "Show test results in Notes.Api.Test"
         uses: dorny/test-reporter@v1
