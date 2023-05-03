@@ -3,6 +3,9 @@ name: "Hello .NET"
 on:
   workflow_dispatch:
 
+env:
+  NOTES_TEST_CONF: Notes.Api.Test/Notes.Api.Test.csproj
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
@@ -19,10 +22,10 @@ jobs:
         run: dotnet --version
 
       - name: "Restore tests in Notes.Api.Test"
-        run: "dotnet restore Notes.Api.Test/Notes.Api.Test.csproj"
+        run: "dotnet restore $NOTES_TEST_CONF"
 
       - name: "Build tests in Notes.Api.Test"
-        run: "dotnet build --no-restore --configuration Release Notes.Api.Test/Notes.Api.Test.csproj"
+        run: "dotnet build --no-restore --configuration Release $NOTES_TEST_CONF"
 
       - name: "Run tests in Notes.Api.Test"
-        run: "dotnet test --no-build --configuration Release Notes.Api.Test/Notes.Api.Test.csproj"
+        run: "dotnet test --no-build --configuration Release $NOTES_TEST_CONF"
