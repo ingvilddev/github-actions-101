@@ -25,7 +25,7 @@ jobs:
           context: .
           file: ./Notes.Api/Dockerfile
           push: true
-          tags: notes-api:v${{ github.run_number }}
+          tags: ingvildforseth/notes-api:v${{ github.run_number }}
 
   deploy:
     runs-on: ubuntu-latest
