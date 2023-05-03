@@ -45,4 +45,4 @@ jobs:
       - uses: Azure/k8s-deploy@v3.1
         with:
           manifests: Notes.Api/Kubernetes.yaml
-          images: notes-api:v${{ github.run_number }}
+          images: ingvildforseth/notes-api:v${{ github.run_number }}
