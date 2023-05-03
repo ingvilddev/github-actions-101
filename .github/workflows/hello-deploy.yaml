@@ -37,6 +37,10 @@ jobs:
 
       - uses: azure/setup-kubectl@v3
 
+      - uses: azure/use-kubelogin@v1
+        with:
+          kubelogin-version: "v0.0.24"
+
       - uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
